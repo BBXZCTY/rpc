@@ -1,6 +1,7 @@
 package com.demo.rpc.server.api;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class RpcRequest implements Serializable {
 
@@ -30,5 +31,14 @@ public class RpcRequest implements Serializable {
 
     public void setArguments(Object[] arguments) {
         this.arguments = arguments;
+    }
+
+    @Override
+    public String toString() {
+        return "RpcRequest{" +
+                "className='" + className + '\'' +
+                ", methodName='" + methodName + '\'' +
+                ", arguments=" + Arrays.toString(arguments) +
+                '}';
     }
 }

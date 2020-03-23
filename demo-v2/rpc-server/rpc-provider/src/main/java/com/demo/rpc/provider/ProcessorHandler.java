@@ -57,23 +57,30 @@ public class ProcessorHandler implements Runnable {
         String className = rpcRequest.getClassName();
         String methodName = rpcRequest.getMethodName();
         Object[] arguments = rpcRequest.getArguments();
+        System.out.println(rpcRequest);
         Object result = null;
-        try {
-            Class<?>[] parameterTypes = new Class[arguments.length];
-            for (int i = 0; i < arguments.length; i++) {
-                parameterTypes[i] = arguments[i].getClass();
+        if (!className.startsWith("java")) {
+            try {
+                Class<?>[] parameterTypes = new Class[arguments.length];
+                for (int i = 0; i < arguments.length; i++) {
+                    parameterTypes[i] = arguments[i].getClass();
+                }
+                // className传接口或者实现类都可以
+                Class<?> aClass = Class.forName(className);
+                Method method = aClass.getMethod(methodName, parameterTypes);
+                result = method.invoke(service, arguments);
+                System.out.println("service=" + service);
+                result = "这里才是真正的服务端执行结果-->" + result;
+                System.out.println("服务端执行结果:" + result);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
             }
-            Class<?> aClass = Class.forName(className);
-            Method method = aClass.getMethod(methodName, parameterTypes);
-            result = method.invoke(service, arguments);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
         }
         return result;
     }

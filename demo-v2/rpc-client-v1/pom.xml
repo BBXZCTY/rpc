@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>rpc-client</artifactId>
+    <artifactId>rpc-client-v1</artifactId>
     <dependencies>
         <dependency>
             <groupId>com.demo.rpc</groupId>

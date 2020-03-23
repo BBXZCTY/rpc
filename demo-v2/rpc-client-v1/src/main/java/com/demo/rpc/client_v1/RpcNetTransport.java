@@ -1,4 +1,4 @@
-package com.demo.rpc.client;
+package com.demo.rpc.client_v1;
 
 import com.demo.rpc.server.api.RpcRequest;
 
