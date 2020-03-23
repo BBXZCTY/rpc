@@ -2,15 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>rpc-demo</artifactId>
+        <groupId>com.demo.rpc</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.demo.rpc</groupId>
-    <artifactId>rpc-demo</artifactId>
+    <artifactId>demo-v2</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>demo-v1</module>
-        <module>demo-v2</module>
+        <module>rpc-client</module>
+        <module>rpc-server</module>
     </modules>
 
 
